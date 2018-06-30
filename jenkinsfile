@@ -31,6 +31,10 @@ pipeline {
               sh "echo ${env.BUILD_NUMBER}"
               echo "agregando artefacto"
               sh "touch ${ARTIFACTOR}"
+              script {
+                 def ID = sh(returnStdout: true, script: "./ami_id.sh").trim()
+                 sh "./build_ami.sh ${ID}"
+             }
             }
         }
         stage("Test") {
