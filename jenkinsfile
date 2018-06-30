@@ -35,8 +35,6 @@ pipeline {
         }
         stage("Test") {
             steps {
-              sh "echo tests"
-              sh "echo ${env.BUILD_URL}"
               parallel (
                   syntax: { sh "echo syntax" },
                   grep: { sh "echo 'grep'" }
