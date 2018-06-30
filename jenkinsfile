@@ -23,6 +23,8 @@ pipeline {
             steps {
               echo "build"
               sh "echo ${env.BUILD_NUMBER}"
+              echo "agregando artefacto"
+              sh "touch ${ARTIFACTOR}"
             }
         }
         stage("Test") {
@@ -37,6 +39,7 @@ pipeline {
               sh "echo ${env.JOB_NAME}"
               sh "echo ${env.ARTIFACTOR}"
               sh "echo ${env.SLACK_MESSAGE}"
+              archiveArtifacts artifacts: "${ARTIFACTOR}", onlyIfSuccessful: true
             }
         }
     }
