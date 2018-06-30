@@ -5,6 +5,7 @@ pipeline {
             steps {
               //git url: "https://github.com/pynef/jenkins-pipeline.git"
               checkout scm
+              sh "echo ${env.WORKSPACE}"
             }
         }
         stage("Build") {
