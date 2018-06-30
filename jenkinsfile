@@ -16,11 +16,13 @@ pipeline {
         stage("Test") {
             steps {
               sh "echo tests"
+              sh "echo ${env.BUILD_URL}"
             }
         }
         stage("Deploy") {
             steps {
               sh "echo deploy"
+              sh "echo ${env.JOB_NAME}"
             }
         }
     }
